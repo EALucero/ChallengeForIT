@@ -1,19 +1,19 @@
 module.exports = {
-    store: async (req, res) => {
+    list: async (req, res) => {
         try {
-            return res.status(201).json({
+            return res.status(200).json({
                 ok: true,
-                msg: 'Tarea guardado'
+                msg: 'Lista de Tareas'
             })
         } catch (error) {
             console.log(error);
             return res.status(error.status || 500).json({
                 ok: false,
-                msg: error.message || 'Error en STORE-TASK'
+                msg: error.message || 'Upss, hubo un error en TASKS-LIST'
             })
         }
     },
-    detail: async (req, res) => {
+    item: async (req, res) => {
         try {
             return res.status(200).json({
                 ok: true,
@@ -23,7 +23,21 @@ module.exports = {
             console.log(error);
             return res.status(error.status || 500).json({
                 ok: false,
-                msg: error.message || 'Error en TASK-DETAIL'
+                msg: error.message || 'Error en TASK-ITEM'
+            })
+        }
+    },
+    create: async (req, res) => {
+        try {
+            return res.status(201).json({
+                ok: true,
+                msg: 'Tarea guardada'
+            })
+        } catch (error) {
+            console.log(error);
+            return res.status(error.status || 500).json({
+                ok: false,
+                msg: error.message || 'Error en STORE-TASK'
             })
         }
     },
@@ -45,7 +59,7 @@ module.exports = {
         try {
             return res.status(200).json({
                 ok: true,
-                msg: 'Tarea eliminado'
+                msg: 'Tarea eliminada'
             })
         } catch (error) {
             console.log(error);

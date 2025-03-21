@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const { store, update, remove } = require('../controllers/tasksController');
+const { list, create, update, remove } = require('../controllers/tasksController');
 
 router
     .route('/')
-    .post(store)
+    .get(list)
+    .post(create)
 router
     .route('/:id')
     .put(update)
