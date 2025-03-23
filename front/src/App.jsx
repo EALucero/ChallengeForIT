@@ -1,13 +1,13 @@
-import { useState } from 'react'
+import { TasksProvider } from "./context/TaskProvider";
 import TaskLayout from "./layout";
 import AppRoutes from "./routes"
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <TaskLayout>
-      <AppRoutes />
+      <TasksProvider>
+        <AppRoutes />
+      </TasksProvider>
     </TaskLayout>
   )
 }

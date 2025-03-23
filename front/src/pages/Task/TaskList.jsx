@@ -1,12 +1,12 @@
 import TaskCard from "../../components/TaskCard";
+import { useTask } from "../../hooks/useTask";
 
-const TasksList = () => {
-    const { tasks } = useTasks();
+export default function TasksList() {
+    const { tasks } = useTask(TaskCard);
 
     return (
         <>
             <h1 className="text-4xl font-black">Tareas</h1>
-            {/* {alert.msg && <Alert {...alert} />} */}
             <div className="bg-white shadow mt-10 rounded-lg ">
                 {tasks.length ? (
                     tasks.map((task) => (
@@ -21,5 +21,3 @@ const TasksList = () => {
         </>
     );
 };
-
-export default TasksList;
