@@ -1,23 +1,35 @@
-const TaskCard = ({ task }) => {
-  useTasks = () => {}
+import { Col, Card, Button } from "react-bootstrap";
+import { useTask } from "../hooks/useTask";
+import PropTypes from 'prop-types';
+
+export default function TaskCard({ task }) {
+  const { handleTaskIdClick } = useTask()
 
   return (
-    <div className="border-b p-5 flex justify-between items-center">
-      <h2 className="bg-sky-800"></h2>
-      <div className="flex flex-col  items-start">
-        <p className="mb-1 text-xl">{task.name}</p>
-        <p className="mb-1 text-sm text-gray-500 uppercase">
-          {task.description}
-        </p>
-        <p className="mb-1 text-sm">{task.date.split("T")[0]}</p>
-        {task.completed && (
-          <p className="text-xs bg-green-600 uppercase p-1 rounded-lg text-white">
-            Completada
-          </p>
-        )}
-      </div>
-    </div>
+    <Col md={6} lg={3}>
+      <Card className="mb-4">
+        <Card.Body>
+          <Card.Title>{task.title}</Card.Title>
+          <Card.Text>{task.description}</Card.Text>
+          <Button
+            variant="warning"
+            className="w-100 text-uppercase mt-2"
+            onClick={
+              () => {
+                handleTaskIdClick(task.id)
+              }
+            }
+          >
+            Editar
+          </Button>
+        </Card.Body>
+      </Card>
+    </Col>
   );
-};
+}
 
-export default TaskCard;
+TaskCard.propTypes = {
+  task: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+  }).isRequired,
+};

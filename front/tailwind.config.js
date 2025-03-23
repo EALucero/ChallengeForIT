@@ -8,6 +8,10 @@ export default {
     extend: {
       fontFamily: {
         'sans': ['Inter, system-ui, Avenir, Helvetica, Arial, sans-serif'],
+      },
+      gap: {
+        '11': '2.75rem',
+        '13': '3.25rem',
       }
     },
   },
